@@ -1,12 +1,11 @@
 package elgrage.matthew.planofpbs.repository;
 
+import elgrage.matthew.planofpbs.domain.Christian;
 import elgrage.matthew.planofpbs.domain.PbsNote;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -19,11 +18,18 @@ class PbsNoteRepositoryTest {
     @Autowired
     private PbsNoteRepository pbsNoteRepository;
 
+    @Autowired
+    private ChrisitanRepository chrisitanRepository;
+
     @Test
     @DisplayName("CREATE")
-    @Transactional
     void create() {
         //given
+        Optional<Christian> optionalChristian = chrisitanRepository.findById(2L);
+
+        Christian christian = optionalChristian.orElseThrow();
+
+
         String content = """
                 == Test Content ==
                 Enlightenments: love 
@@ -38,6 +44,7 @@ class PbsNoteRepositoryTest {
                 .content(content)
                 .goal("jesus desire")
                 .isShared(false)
+                .christian(christian)
                 .build();
         //when
         PbsNote saveNote = pbsNoteRepository.save(note);
@@ -54,8 +61,7 @@ class PbsNoteRepositoryTest {
 
         //then
         assertAll(
-                () -> assertTrue(optionalPbsNote.isPresent()),
-                () -> assertEquals(optionalPbsNote.get().getPart(), "matthew 6: 33v")
+                () -> assertEquals("matthew 6: 33v", optionalPbsNote.get().getPart())
         );
     }
 

@@ -20,15 +20,11 @@ CREATE DOMAIN DOMAIN_EMAIL AS citext
         VALUE ~ '^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$'
     );
 
-CREATE TYPE GENDER_TYPE AS ENUM('MALE', 'FEMALE', 'UNKNOWN');
-
-CREATE TYPE ROLE_TYPE AS ENUM('ADMIN', 'USER');
-
 CREATE TABLE christian (
                            user_id SERIAL PRIMARY KEY,
-                           gender GENDER_TYPE not null,
+                           gender VARCHAR(7) not null,
                            mail DOMAIN_EMAIL not null,
-                           role ROLE_TYPE not null
+                           role VARCHAR(10) not null
 );
 
 ALTER TABLE note ADD CONSTRAINT fk_christian FOREIGN KEY (christian_id) REFERENCES christian(user_id);
