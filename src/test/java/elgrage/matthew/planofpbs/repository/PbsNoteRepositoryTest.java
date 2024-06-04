@@ -2,11 +2,14 @@ package elgrage.matthew.planofpbs.repository;
 
 import elgrage.matthew.planofpbs.domain.Christian;
 import elgrage.matthew.planofpbs.domain.PbsNote;
+import elgrage.matthew.planofpbs.request.NoteSearch;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,6 +26,7 @@ class PbsNoteRepositoryTest {
 
     @Test
     @DisplayName("CREATE")
+    @Transactional
     void create() {
         //given
         Optional<Christian> optionalChristian = chrisitanRepository.findById(2L);
@@ -63,6 +67,21 @@ class PbsNoteRepositoryTest {
         assertAll(
                 () -> assertEquals("matthew 6: 33v", optionalPbsNote.get().getPart())
         );
+    }
+
+    @Test
+    @DisplayName("QueryDSL")
+    @Transactional
+    void queryDsl() {
+        //given
+        NoteSearch search = NoteSearch.builder()
+                .passage("matthew 6: 33v")
+                .keyword("love jesus")
+                .build();
+        //when
+        List<PbsNote> notes = pbsNoteRepository.findByDynamicQuery(search);
+        //then
+        assertThat(notes.size()).isEqualTo(2);
     }
 
 }

@@ -33,7 +33,7 @@ public class NoteService {
         pbsNoteRepository.save(note);
     }
 
-    private Christian retrieveById(String id) {
-        return chrisitanRepository.findById(Long.valueOf(id)).orElseThrow(() -> new ChristianNotFoundException("해당 ID의 사용자가 없습니다."));
+    private Christian retrieveById(Long id) {
+        return chrisitanRepository.findById(id).orElseThrow(() -> new ChristianNotFoundException("해당 ID의 사용자가 없습니다."));
     }
 }

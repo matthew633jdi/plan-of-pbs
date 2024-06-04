@@ -11,8 +11,9 @@ import lombok.ToString;
 @Getter @Setter
 @ToString
 public class NoteCreate {
+
     @NotBlank(message = "사용자 ID를 입력해주세요")
-    private String userId;
+    private Long userId;
 
     @NotBlank(message = "성경 구절을 입력해주세요")
     @Size(min = 3)
@@ -28,7 +29,7 @@ public class NoteCreate {
     private boolean share;
 
     @Builder
-    public NoteCreate(String userId, String passage, String keyword, String exegesis, String actions, boolean share) {
+    public NoteCreate(Long userId, String passage, String keyword, String exegesis, String actions, boolean share) {
         this.userId = userId;
         this.passage = passage;
         this.keyword = keyword;
