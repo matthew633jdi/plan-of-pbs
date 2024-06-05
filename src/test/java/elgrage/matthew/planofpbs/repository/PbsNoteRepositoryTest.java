@@ -84,4 +84,18 @@ class PbsNoteRepositoryTest {
         assertThat(notes.size()).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("QueryDSL fail")
+    void failed() {
+        //given
+        NoteSearch search = NoteSearch.builder()
+                .passage("matthew 6: 33v")
+                .keyword("love jesu")
+                .build();
+        //when
+        List<PbsNote> notes = pbsNoteRepository.findByDynamicQuery(search);
+        //then
+        assertThat(notes.size()).isZero();
+    }
+
 }

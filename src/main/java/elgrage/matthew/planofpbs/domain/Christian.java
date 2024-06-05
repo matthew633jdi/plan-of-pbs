@@ -14,6 +14,8 @@ public class Christian {
     @Column(name = "user_id")
     private Long id;
 
+    private String name;
+
     @Enumerated(EnumType.STRING)
     private GenderType gender;
 
@@ -23,7 +25,8 @@ public class Christian {
     private RoleType role;
 
     @Builder
-    public Christian(GenderType gender, String mail, RoleType role) {
+    public Christian(String name, GenderType gender, String mail, RoleType role) {
+        this.name = name;
         this.gender = gender;
         this.mail = mail;
         this.role = role;

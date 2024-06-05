@@ -1,12 +1,11 @@
 package elgrage.matthew.planofpbs.request;
 
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
+@Data
 public class NoteSearch {
 
     private Long userId;
