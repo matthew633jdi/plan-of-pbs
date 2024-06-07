@@ -42,4 +42,5 @@ public class PbsNote extends BaseTimeEntity {
         this.goal = goal;
         this.isShared = isShared;
     }
+
 }

@@ -1,7 +1,6 @@
 package elgrage.matthew.planofpbs.controller;
 
 import elgrage.matthew.planofpbs.request.NoteCreate;
-import elgrage.matthew.planofpbs.request.NoteEdit;
 import elgrage.matthew.planofpbs.request.NoteSearch;
 import elgrage.matthew.planofpbs.response.NoteResponse;
 import elgrage.matthew.planofpbs.service.NoteService;
@@ -36,8 +35,4 @@ public class NoteController {
         return noteService.retrieve(request);
     }
 
-    @PatchMapping("/notes/{noteId}")
-    public void edit(@PathVariable Long noteId, @RequestBody @Valid NoteEdit requestBody) {
-        noteService.edit(noteId, requestBody);
-    }
 }

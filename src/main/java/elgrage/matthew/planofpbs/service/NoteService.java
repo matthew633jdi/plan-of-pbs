@@ -7,7 +7,6 @@ import elgrage.matthew.planofpbs.exception.NoteNotFound;
 import elgrage.matthew.planofpbs.repository.ChrisitanRepository;
 import elgrage.matthew.planofpbs.repository.PbsNoteRepository;
 import elgrage.matthew.planofpbs.request.NoteCreate;
-import elgrage.matthew.planofpbs.request.NoteEdit;
 import elgrage.matthew.planofpbs.request.NoteSearch;
 import elgrage.matthew.planofpbs.response.NoteResponse;
 import lombok.RequiredArgsConstructor;
@@ -52,10 +51,5 @@ public class NoteService {
 
     private Christian retrieveById(Long id) {
         return chrisitanRepository.findById(id).orElseThrow(() -> new ChristianNotFoundException("해당 ID의 사용자가 없습니다."));
-    }
-
-    public void edit(Long id, NoteEdit request) {
-        PbsNote note = pbsNoteRepository.findById(id).orElseThrow(() -> new NoteNotFound("not found pbs note"));
-        // TODO
     }
 }
