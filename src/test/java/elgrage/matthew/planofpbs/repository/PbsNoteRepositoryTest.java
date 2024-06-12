@@ -22,7 +22,7 @@ class PbsNoteRepositoryTest {
     private PbsNoteRepository pbsNoteRepository;
 
     @Autowired
-    private ChrisitanRepository chrisitanRepository;
+    private ChristianRepository chrisitanRepository;
 
     @Test
     @DisplayName("CREATE")

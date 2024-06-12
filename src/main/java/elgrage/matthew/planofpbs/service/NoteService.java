@@ -4,7 +4,7 @@ import elgrage.matthew.planofpbs.domain.Christian;
 import elgrage.matthew.planofpbs.domain.PbsNote;
 import elgrage.matthew.planofpbs.exception.ChristianNotFoundException;
 import elgrage.matthew.planofpbs.exception.NoteNotFound;
-import elgrage.matthew.planofpbs.repository.ChrisitanRepository;
+import elgrage.matthew.planofpbs.repository.ChristianRepository;
 import elgrage.matthew.planofpbs.repository.PbsNoteRepository;
 import elgrage.matthew.planofpbs.request.NoteCreate;
 import elgrage.matthew.planofpbs.request.NoteSearch;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class NoteService {
 
     private final PbsNoteRepository pbsNoteRepository;
-    private final ChrisitanRepository chrisitanRepository;
+    private final ChristianRepository chrisitanRepository;
 
     public void write(NoteCreate noteCreate) {
 

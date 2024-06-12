@@ -1,8 +1,6 @@
 package elgrage.matthew.planofpbs.repository;
 
 import elgrage.matthew.planofpbs.domain.Christian;
-import elgrage.matthew.planofpbs.domain.GenderType;
-import elgrage.matthew.planofpbs.domain.RoleType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ChrisitanRepositoryTest {
 
     @Autowired
-    ChrisitanRepository chrisitanRepository;
+    ChristianRepository chrisitanRepository;
 
     @Test
     @DisplayName("SAVE")
@@ -23,8 +21,9 @@ class ChrisitanRepositoryTest {
     void save() {
         //given
         Christian christian = Christian.builder()
-                .gender(GenderType.MALE)
-                .role(RoleType.ADMIN)
+                .role("ROLE_USER")
+                .name("username")
+                .password("passwordTest")
                 .mail("abc@example.com")
                 .build();
 

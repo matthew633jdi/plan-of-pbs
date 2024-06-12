@@ -15,20 +15,20 @@ public class Christian {
     private Long id;
 
     private String name;
-
-    @Enumerated(EnumType.STRING)
-    private GenderType gender;
-
+    private String password;
     private String mail;
+    private String role;
+    private String provider;
 
-    @Enumerated(EnumType.STRING)
-    private RoleType role;
+    private String providerId;
 
     @Builder
-    public Christian(String name, GenderType gender, String mail, RoleType role) {
+    public Christian(String name, String password, String mail, String role, String provider, String providerId) {
         this.name = name;
-        this.gender = gender;
+        this.password = password;
         this.mail = mail;
         this.role = role;
+        this.provider = provider;
+        this.providerId = providerId;
     }
 }
